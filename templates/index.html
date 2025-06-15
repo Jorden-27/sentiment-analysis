@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tweet Sentiment Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<div class="container">
+    <h2>Sentiment Analysis of BJP Tweets</h2>
+    <form method="POST">
+        <textarea name="tweet" rows="4" placeholder="Enter your tweet here..." required>{{ tweet if tweet else "" }}</textarea><br><br>
+        
+        <label><input type="radio" name="model" value="logreg" required> Logistic Regression</label>
+        <label><input type="radio" name="model" value="nb"> Naive Bayes</label><br><br>
+        
+        <button type="submit">Analyze</button>
+    </form>
+    
+    {% if result %}
+    <hr>
+    <h3>Prediction: {{ result }}</h3>
+    <p>Model Accuracy: {{ accuracy }}%</p>
+    {% endif %}
+</div>
+</body>
+</html>
